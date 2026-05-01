@@ -400,16 +400,38 @@ try:
                 pass 
 
             print("  -> 等待硬體驗證與系統跳轉 (時間不固定，請稍候)...")
-            # 💡 已將此處等待極限拉長至 90 秒，完美包容自然人憑證驗證時間
-            driver.switch_to.default_content()
-            WebDriverWait(driver, 90).until(
-                EC.frame_to_be_available_and_switch_to_it((By.ID, "dTreeContent"))
-            )
-            WebDriverWait(driver, 90).until(
-                EC.presence_of_element_located((By.ID, "listTBODY"))
-            )
             
-            print(f"✅ 完成歸檔：{doc['title'][:15]}...")
+            wait_time = 0
+            success_archived = False
+            
+            while wait_time < 90:
+                time.sleep(5)
+                wait_time += 5
+                
+                try:
+                    driver.switch_to.default_content()
+                    driver.switch_to.frame("dTreeContent")
+                    
+                    # 確保已回到含有待結案清單的畫面
+                    driver.find_element(By.ID, "listTBODY")
+                    
+                    # 抓取畫面上剩餘的公文 ID
+                    new_checkboxes = driver.find_elements(By.NAME, "ids")
+                    new_ids = [cb.get_attribute("value") for cb in new_checkboxes]
+                    
+                    # 若當前處理的公文ID已不在清單中，視為歸檔完成並跳轉回清單
+                    if doc['id'] not in new_ids:
+                        success_archived = True
+                        break
+                except Exception:
+                    # 發生錯誤代表頁面可能正在跳轉或載入中，忽略並繼續等待
+                    pass
+            
+            if success_archived:
+                print(f"✅ 完成歸檔：{doc['title'][:15]}...")
+            else:
+                print(f"⚠️ 等待超時或未偵測到變化，強制接續下一筆...")
+                
             time.sleep(1.5)
 
         except Exception as inner_e:
