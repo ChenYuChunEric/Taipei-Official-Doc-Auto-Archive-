@@ -27,7 +27,12 @@ def check_update():
         # 使用專用 Thread 檢查或直接在啟動時檢查
         with urllib.request.urlopen(VERSION_URL, timeout=5) as response:
             latest_version = response.read().decode('utf-8').strip()
-            if latest_version > VERSION:
+            
+            # 將版本號轉換為數字陣列 (例如 "1.2.0" -> [1, 2, 0]) 來進行精確的大小比對
+            current_v_tuple = [int(v) for v in VERSION.split('.')]
+            latest_v_tuple = [int(v) for v in latest_version.split('.')]
+            
+            if latest_v_tuple > current_v_tuple:
                 if messagebox.askyesno("更新通知", f"發現新版本：{latest_version}\n目前版本：{VERSION}\n\n是否前往 GitHub 下載新版本？"):
                     webbrowser.open(REPO_URL)
     except Exception as e:
