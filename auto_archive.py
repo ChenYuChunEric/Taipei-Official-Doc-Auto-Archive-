@@ -5,6 +5,8 @@ import traceback
 import subprocess
 import os
 import sys
+import urllib.request
+import webbrowser
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -13,7 +15,26 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 
 # ==========================================
-# 階段零：環境設定與「極簡版」外部設定檔讀取
+# 階段零：版本資訊與更新檢查
+# ==========================================
+VERSION = "1.2.0"
+VERSION_URL = "https://raw.githubusercontent.com/ChenYuChunEric/Taipei-Official-Doc-Auto-Archive-/master/version.txt"
+REPO_URL = "https://github.com/ChenYuChunEric/Taipei-Official-Doc-Auto-Archive-"
+
+def check_update():
+    """檢查 GitHub 上的版本號是否比目前新"""
+    try:
+        # 使用專用 Thread 檢查或直接在啟動時檢查
+        with urllib.request.urlopen(VERSION_URL, timeout=5) as response:
+            latest_version = response.read().decode('utf-8').strip()
+            if latest_version > VERSION:
+                if messagebox.askyesno("更新通知", f"發現新版本：{latest_version}\n目前版本：{VERSION}\n\n是否前往 GitHub 下載新版本？"):
+                    webbrowser.open(REPO_URL)
+    except Exception as e:
+        print(f"檢查更新失敗 (可能為網路問題或查無檔案): {e}")
+
+# ==========================================
+# 階段一：環境設定與「極簡版」外部設定檔讀取
 # ==========================================
 
 # 這是內建的「大腦辭典」，包含了系統內所有的分類代碼與完整名稱
@@ -264,8 +285,12 @@ try:
 
     # 2. 建立 Tkinter 視窗
     root = tk.Tk()
-    root.title("電子公文歸檔自動化系統")
+    root.title(f"電子公文歸檔自動化系統 v{VERSION}")
     root.geometry("850x450")
+    
+    # 檢查更新
+    check_update()
+    
     root.attributes('-topmost', True) # 視窗置頂，方便操作
 
     # 第一階段 Frame (等待準備)
