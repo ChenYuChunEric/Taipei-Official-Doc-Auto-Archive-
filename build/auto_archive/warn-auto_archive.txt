@@ -14,7 +14,7 @@ Types if import:
 IMPORTANT: Do NOT post this list to the issue-tracker. Use it as a basis for
             tracking down the missing module yourself. Thanks!
 
-missing module named pyimod02_importers - imported by C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth_pkgutil.py (delayed)
+missing module named pyimod02_importers - imported by C:\Users\stu5611\AppData\Local\Programs\Python\Python313\Lib\site-packages\PyInstaller\hooks\rthooks\pyi_rth_pkgutil.py (delayed)
 missing module named pwd - imported by posixpath (delayed, conditional, optional), shutil (delayed, optional), tarfile (optional), pathlib._local (optional), subprocess (delayed, conditional, optional), netrc (delayed, conditional), getpass (delayed, optional)
 missing module named grp - imported by shutil (delayed, optional), tarfile (optional), pathlib._local (optional), subprocess (delayed, conditional, optional)
 missing module named posix - imported by os (conditional, optional), posixpath (optional), shutil (conditional), importlib._bootstrap_external (conditional)

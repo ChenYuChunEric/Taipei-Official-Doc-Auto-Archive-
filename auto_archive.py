@@ -184,6 +184,7 @@ def launch_chrome():
         # 使用 subprocess 自動在背景開啟 Chrome
         subprocess.Popen([
             chrome_path, 
+            "https://edoc.gov.taipei/tcqb/index.jsp#",
             "--remote-debugging-port=9222", 
             f"--user-data-dir={user_data_dir}"
         ])
