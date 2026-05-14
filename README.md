@@ -2,6 +2,7 @@
 
 這是一個專為公務人員與教育機構行政同仁設計的「電子公文自動歸檔小幫手」。透過 Python 與 Selenium 技術，協助使用者從繁瑣的公文歸檔點擊流程中解放，實現「批次選取、自動歸檔」。
 
+▶ 點擊縮圖即可播放影片
 [![Watch the video](https://img.youtube.com/vi/KAfWJzoYdzU/0.jpg)](https://www.youtube.com/watch?v=KAfWJzoYdzU)
 
 ## ✨ 核心特色
