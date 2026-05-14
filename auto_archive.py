@@ -36,7 +36,12 @@ def check_update():
                 if messagebox.askyesno("更新通知", f"發現新版本：{latest_version}\n目前版本：{VERSION}\n\n是否前往 GitHub 下載新版本？"):
                     webbrowser.open(REPO_URL)
     except Exception as e:
-        print(f"檢查更新失敗 (可能為網路問題或查無檔案): {e}")
+        # 如果是 404 錯誤，通常是因為 GitHub 上找不到 version.txt
+        error_msg = str(e)
+        if "404" in error_msg:
+            print(f"檢查更新失敗：找不到伺服器上的版本檔案 (404)。請檢查 GitHub 儲存庫中是否存在 version.txt。")
+        else:
+            print(f"檢查更新失敗 (可能為網路問題): {e}")
 
 # ==========================================
 # 階段一：環境設定與「極簡版」外部設定檔讀取
