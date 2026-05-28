@@ -19,14 +19,6 @@
 - **自動檢查更新**：啟動時自動比對 GitHub 最新版本，主動提醒下載。
 - **自定義分類檔**：支援 `categories.txt` 設定檔，自訂常用分類清單。
 
-## 🛠️ 環境準備
-
-1. **安裝 Chrome 瀏覽器**：請確保電腦已安裝 Google Chrome。
-2. **安裝 Python 環境**（若執行原始碼）：
-   - 建議版本：Python 3.8+
-   - 必要套件：`pip install selenium`
-3. **下載 ChromeDriver**：程式會嘗試透過 Selenium 自動管理，若失敗請確保有對應版本的 ChromeDriver。
-
 ## 🚀 如何使用
 
 ### 使用執行檔 (.exe)
@@ -40,11 +32,6 @@
 8. **選擇分類**：針對抓取到的公文，從下拉選單選擇對應的歸檔分類。
 9. **開始歸檔**：點擊「確認分類，開始批次自動歸檔！」，接著就可以放開雙手，讓程式自動運作。
 
-### 使用原始碼 (.py)
-```bash
-python auto_archive.py
-```
-
 ## ⚙️ 進階設定：自訂分類檔
 
 程式啟動時會自動在同目錄下產生 `categories.txt`。您可以使用記事本開啟它，輸入您常用的分類代碼：
@@ -56,6 +43,19 @@ python auto_archive.py
 03010203
 ```
 程式下次啟動時，下拉選單就會顯示這些代碼對應的完整名稱，方便快速選取。
+
+## 🛠️ 環境準備
+
+1. **安裝 Chrome 瀏覽器**：請確保電腦已安裝 Google Chrome。
+2. **安裝 Python 環境**（若執行原始碼）：
+   - 建議版本：Python 3.8+
+   - 必要套件：`pip install selenium`
+3. **下載 ChromeDriver**：程式會嘗試透過 Selenium 自動管理，若失敗請確保有對應版本的 ChromeDriver。
+
+### 使用原始碼 (.py)
+```bash
+python auto_archive.py
+```
 
 ## ⚠️ 注意事項
 
