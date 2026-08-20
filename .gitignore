@@ -1,0 +1,16 @@
+# Python & PyInstaller Cache
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+scratch/
+
+# Virtual Environment
+venv/
+.venv/
+
+# Environment variables & IDE
+.vscode/
+.idea/
+.DS_Store
