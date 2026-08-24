@@ -4,6 +4,10 @@
 
 ---
 
+▶ 點擊縮圖即可播放影片
+
+[![Watch the video](https://img.youtube.com/vi/ovjEiF2MDoY/0.jpg)](https://www.youtube.com/watch?v=ovjEiF2MDoY)
+
 ## ✨ 核心特色與 v1.3 重要更新
 
 - **全自動智慧歸檔流程**：
